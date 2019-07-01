@@ -2,9 +2,11 @@ import random
 
 traitlist = ["speed", "stamina", "breaking", "power", "courage"]
 
+
 def bool_input(question):
     true_answer = ["yes", "y"]
     return input(question).lower() in true_answer
+
 
 def ghost_race():
     field = []
@@ -40,7 +42,7 @@ def ghost_race():
             toggle = False
         return toggle
 
-    def negativeAdjust(stat, negative):
+    def negative_adjust(stat, negative):
         for n in range(0, negative):
             stat = stat * 0.95
         stat = int(stat)
@@ -50,7 +52,7 @@ def ghost_race():
         tot = random.randint(lo, int((hi * 0.95)))
         field.append(["NPC", tot])
 
-    def placeFinder():
+    def place_finder():
         size = calculator()
         choice = random.randint(0, size)
         for n in range(0, len(field)):
@@ -69,7 +71,7 @@ def ghost_race():
             total += add[1]
         return total
 
-    stat = negativeAdjust(stat, negative)
+    stat = negative_adjust(stat, negative)
 
     for y in range(0, how_many):
         boolean = False
@@ -94,11 +96,10 @@ def ghost_race():
             x += 1
 
         for n in range(0, allowed_winners):
-            placeFinder()
+            place_finder()
             if winners[n] != "NPC":
                 place = n + 1
 
-        op = place
         if mean_calc(history) >= 1:
             boolean = consistency(cons)
         if boolean:
@@ -153,7 +154,8 @@ def ghost_race():
                 print(name + " has been injured for " + length + " days!")
             else:
                 print(
-                    "\n\n" + name + " has been injured for " + length + " days! Sadly, they were unable to complete the race.")
+                    "\n\n" + name + " has been injured for " + length + " days! "
+                                                                        "Sadly, they were unable to complete the race.")
 
         else:
             print("\n\n" + name + " has placed " + str(place) + "!")
@@ -193,7 +195,8 @@ def breed():
 
     if not mirror:
         print(
-            "\nPlease ensure that you leave placeholder genes with 'nn' where one parent has a gene and the other doesn't.")
+            "\nPlease ensure that you leave placeholder genes with 'nn' where one parent has a gene and the other "
+            "doesn't.")
         length = int(input("\nNumber of Unique Genes: "))
         s_inp = list(input("\nSire's Genes: "))
         d_inp = list(input("Dam's Genes: "))
@@ -300,7 +303,7 @@ def breed():
                 genes.append(temp)
         return genes, rare
 
-    def dataGather():
+    def data_gather():
         global division
         division = input("Division: ")
         static(division)
@@ -351,15 +354,15 @@ def breed():
         for n in range(len(stats[1])):
             stats[1][n] = random.randint(1, 19)
         print("\nSIRE")
-        dataGather()
+        data_gather()
         print("\nDAM")
-        dataGather()
+        data_gather()
 
     else:
         print("\nSIRE")
-        dataGather()
+        data_gather()
         print("\nDAM")
-        dataGather()
+        data_gather()
 
     print("\n\n")
     tempo = traits[:]
@@ -499,8 +502,8 @@ def train():
     trait_list = []
     name = input("Horse name: ")
     is_fox = bool_input("Is there a fox? ")
-    how_many = input("How many times? ")
-    number = input("How many stats to train? ")
+    how_many = int(input("How many times? "))
+    number = int(input("How many stats to train? "))
     if number != 5:
         for z in range(0, number):
             trait = input("Enter stat: ")
@@ -533,14 +536,14 @@ def foundation():
     div = input("Division: ")
 
     def roll_found(div):
-        traitRoll = []
-        statRoll = []
+        trait_roll = []
+        stat_roll = []
 
         n = random.randint(0, 3)
         for i in range(1, n):
-            traitRoll.append("N")
-        while len(traitRoll) < 3:
-            traitRoll.append("P")
+            trait_roll.append("N")
+        while len(trait_roll) < 3:
+            trait_roll.append("P")
 
         if div.lower() == "ii":
             u = 30
@@ -563,12 +566,12 @@ def foundation():
                 x = random.randint(l, u)
             else:
                 x = random.randint(1, u)
-            statRoll.append(x)
-        total = sum(statRoll)
+            stat_roll.append(x)
+        total = sum(stat_roll)
 
-        return traitRoll, total, statRoll
+        return trait_roll, total, stat_roll
 
-    traitRoll, total, statRoll = roll_found(div)
+    trait_roll, total, stat_roll = roll_found(div)
 
     print("\nID#: ")
     print("Phenotype:")
@@ -584,9 +587,10 @@ def foundation():
     print("- Power:")
     print("- Courage:")
     print(
-        "\nAt this time, please decide on a name for your new horse and reply with your choice! Once you've decided on a name, you'll be able to start training, racing, etc.\n")
-    print(traitRoll)
-    print(total, statRoll)
+        "\nAt this time, please decide on a name for your new horse and reply with your choice! Once you've decided on "
+        "a name, you'll be able to start training, racing, etc.\n")
+    print(trait_roll)
+    print(total, stat_roll)
 
 
 def mystery_box():
@@ -609,7 +613,7 @@ def mystery_box():
             'nRb',
         ]
 
-        for gene in range(2):
+        for gene in range(random.randint(2)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
@@ -636,7 +640,7 @@ def mystery_box():
             'nCr'
         ]
 
-        for gene in range(4):
+        for gene in range(random.randint(4)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
@@ -663,7 +667,7 @@ def mystery_box():
             ('nCr', 'CrCr')
         ]
 
-        for gene in range(8):
+        for gene in range(random.randint(8)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
@@ -711,7 +715,6 @@ def mystery_box():
     if random.randint(1, 10) == 1:
         additional = get_additional()
 
-
     print("\nGenes: " + str(random_genes))
     print("Gender: " + sex)
     if additional:
@@ -745,7 +748,14 @@ def exploration():
 
 print("Welcome to shiips' Turfside generator!\n")
 while True:
-    print("Would you like to:\n      1. Ghost Race\n      2. Breed\n      3. Train\n      4. Starter\n      5. Mystery Box\n      6. Exploration\n      7. Quit")
+    print("Would you like to:"
+          "\n      1. Ghost Race"
+          "\n      2. Breed"
+          "\n      3. Train"
+          "\n      4. Starter"
+          "\n      5. Mystery Box"
+          "\n      6. Exploration"
+          "\n      7. Quit")
     choice = int(input("\nEnter Choice: "))
 
     if choice == 1:
