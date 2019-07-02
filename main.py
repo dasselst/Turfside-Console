@@ -619,7 +619,7 @@ def mystery_box():
             'nRb',
         ]
 
-        for gene in range(0, random.randint(2)):
+        for gene in range(0, random.randint(0, 2)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
@@ -646,7 +646,7 @@ def mystery_box():
             'nCr'
         ]
 
-        for gene in range(0, random.randint(4)):
+        for gene in range(0, random.randint(0, 4)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
@@ -673,7 +673,7 @@ def mystery_box():
             ('nCr', 'CrCr')
         ]
 
-        for gene in range(0, random.randint(8)):
+        for gene in range(0, random.randint(0, 8)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
