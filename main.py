@@ -729,24 +729,21 @@ def mystery_box():
 
 def exploration():
     item_list = [
-        ['Lunge Whip', 'Lunge Whips'],
-        ['First Aid Kit', 'First Aid Kits'],
-        ['Polo Wraps', 'Polo Wraps'],
-        ['Bag of Sugar Cubes', 'Bags of Sugar Cubes'],
-        ['Lucky Shoes', 'Lucky Shoes']
+        'Lunge Whip',
+        'First Aid Kit',
+        'Polo Wraps',
+        'Bag of Sugar Cubes',
+        'Lucky Shoes'
     ]
     item_generation_roll = random.randint(1, 10)
 
-    if item_generation_roll < 4:
+    if item_generation_roll < 5:
         item_count = random.randint(1, 3)
-        item = item_list[random.randint(0, len(item_list)-1)]
-        additional_item = 'stone' if random.randint(0, 1) else 'wood'
-        print("\nFound " +
-              ((str(item_count) + ' ' + item[1]) if item_count > 1 else item[0]) +
-              ' and ' + additional_item)
-    elif 4 <= item_generation_roll < 6:
+        item = ('stone' if item_count == 1 else 'stones') if random.randint(0, 1) else 'wood'
+        print("\nFound " + str(item_count) + ' ' + item + '!')
+    elif item_generation_roll == 5:
         item = item_list[random.randint(0, len(item_list) - 1)]
-        print("\nFound " + item[0])
+        print("\nFound " + item)
     else:
         print("\nNothing was found")
         return
