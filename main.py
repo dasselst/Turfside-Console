@@ -740,7 +740,7 @@ def exploration():
     if item_generation_roll < 5:
         item_count = random.randint(1, 3)
         item = ('stone' if item_count == 1 else 'stones') if random.randint(0, 1) else 'wood'
-        print("\nFound " + str(item_count) + ' ' + item + '!')
+        print("\nFound " + str(item_count) + ' ' + item)
     elif item_generation_roll == 5:
         item = item_list[random.randint(0, len(item_list) - 1)]
         print("\nFound " + item)
