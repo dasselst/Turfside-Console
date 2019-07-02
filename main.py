@@ -21,6 +21,7 @@ def ghost_race():
     stat = int(input("Total: "))
     is_wallet = bool_input("Is there a Wallet? ")
     is_greyhound = bool_input("Is there a Greyhound? ")
+    is_goat = bool_input("Is there a Goat? ")
     negative = int(input("Negative Traits? "))
     bool2 = input("Does consistency string contain any 0s (Y/N)? ")
     if bool2.lower() == "n":
@@ -129,7 +130,7 @@ def ghost_race():
                     place = place - 1
             length = str(random.randint(1, 7))
             fifty = random.randint(1, 2)
-            if fifty == 1:
+            if not is_goat and fifty == 1:
                 print("\n\n" + name + " has placed " + str(place) + "!")
                 if place == 1:
                     if is_wallet:
@@ -332,6 +333,9 @@ def breed():
         elif div.lower() == "hof":
             a = 1
             b = 3
+        else:
+            a = 0
+            b = 0
 
         minimum.append(a)
         minimum.append(b)
@@ -408,7 +412,7 @@ def breed():
         print(genot)
     print(sex)
     print(final)
-    print(stats[0], stats[1], stats[2], stats[3], stats[4])
+    print(stats[0][0], stats[0][1], stats[0][2], stats[0][3], stats[0][4])
 
     if avgs[0] == avgs[1]:
         a = avgs[0]
@@ -502,6 +506,7 @@ def train():
     trait_list = []
     name = input("Horse name: ")
     is_fox = bool_input("Is there a fox? ")
+    is_goat = bool_input("Is there a goat? ")
     how_many = int(input("How many times? "))
     number = int(input("How many stats to train? "))
     if number != 5:
@@ -527,7 +532,7 @@ def train():
             fox_roll = random.randint(1, 5)
             if fox_roll == 1:
                 print("\n" + get_item() + "was found during training!")
-        if x <= risk:
+        if not is_goat and x <= risk:
             days = str(random.randint(1, 7))
             print(name + " has been injured! They will need " + days + " days rest to heal!")
 
