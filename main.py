@@ -124,13 +124,13 @@ def ghost_race():
             history.insert(0, place)
 
         x = random.randint(0, 100)
-        if x <= 10:
+        if not is_goat and x <= 10:
             if stat > 740:
                 if place != 1:
                     place = place - 1
             length = str(random.randint(1, 7))
             fifty = random.randint(1, 2)
-            if not is_goat and fifty == 1:
+            if fifty == 1:
                 print("\n\n" + name + " has placed " + str(place) + "!")
                 if place == 1:
                     if is_wallet:
@@ -411,6 +411,7 @@ def breed():
     else:
         print(genot)
     print(sex)
+    print('Foal')
     print(final)
     print(stats[0][0], stats[0][1], stats[0][2], stats[0][3], stats[0][4])
 
@@ -460,7 +461,7 @@ def breed():
         print(sex)
         print('Foal')
         print(final)
-        print(stats[5], stats[6], stats[7], stats[8], stats[9])
+        print(stats[1][0], stats[1][1], stats[1][2], stats[1][3], stats[1][4])
 
         if avgs[0] == avgs[1]:
             a = avgs[0]
