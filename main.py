@@ -646,7 +646,7 @@ def mystery_box():
             'nCr'
         ]
 
-        for gene in range(0, random.randint(0, 4)):
+        for gene in range(0, random.randint(1, 4)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
@@ -673,7 +673,7 @@ def mystery_box():
             ('nCr', 'CrCr')
         ]
 
-        for gene in range(0, random.randint(0, 8)):
+        for gene in range(0, random.randint(4, 8)):
             random_gene = random.randint(0, len(genes_list)-1)
             if isinstance(genes_list[random_gene], str):
                 return_genes.append(genes_list[random_gene])
@@ -684,7 +684,7 @@ def mystery_box():
 
         return return_genes
 
-    def get_additional():
+    def get_additional(tier):
         additional_list = [
             'Birdcatcher Spots',
             'Bend-Or Spots',
@@ -692,7 +692,17 @@ def mystery_box():
             'Brindle',
             'Chimera'
         ]
-        return additional_list[random.randint(0, len(additional_list)-1)]
+        is_additional = False
+
+        additioanl_roll = random.randint(1, 100)
+        if tier == 1 and additioanl_roll == 100:
+            is_additional = True
+        elif tier == 2 and additioanl_roll > 95:
+            is_additional = True
+        elif tier == 3 and additioanl_roll > 90:
+            is_additional = True
+
+        return additional_list[random.randint(0, len(additional_list)-1)] if is_additional else None
 
     def get_genes(tier):
         genes = list()
@@ -718,8 +728,7 @@ def mystery_box():
     random_genes = get_genes(tier)
     additional = None
 
-    if random.randint(1, 10) == 1:
-        additional = get_additional()
+    additional = get_additional(tier)
 
     print("\nGenes: " + str(random_genes))
     print("Gender: " + sex)
