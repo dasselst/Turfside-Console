@@ -38,6 +38,25 @@ def race():
             horse = ["NPC", tot]
             field.append(horse)
 
+    def place_finder():
+        total = calculator()
+        choice = random.randint(0,total)
+        for n in range(0,len(field)):
+            add = field[n]
+            if choice <= add[1]:
+                winners.append(add[0])
+                field.remove(add)
+                break
+            else:
+                choice = choice - add[1]
+
+    def calculator():
+        total = 0
+        for n in range(0,len(field)-1):
+            add = field[n]
+            total += add[1]
+        return total
+
     field = []
 
     size = int(input("# of Horses? "))
@@ -53,7 +72,8 @@ def race():
     winners = []
     results = []
 
-    for n in range(0, len(field)):
+    for n in range(len(field)):
+        place = place_finder()
         if winners[n] == "NPC":
             results.append([n + 1, winners[n]])
         else:
